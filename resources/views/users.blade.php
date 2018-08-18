@@ -13,11 +13,11 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header">
-                    <h1 class="form-inline mx-auto d-flex justify-content-between">
+                    <h1 class="form-inline">
                         <div class="mx-auto">
                             Busqueda de Usuario
                         </div>
-                        <form action="{{ url('/') }}" method="GET" class="my-2 form-inline">
+                        <form action="{{ url('/') }}" method="GET" class="my-2 form-inline mt-3">
                             {{-- Nombre --}}
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
@@ -52,27 +52,29 @@
                         </form>
                     </h1>
                 </div>
-                <div class="col-md-12">
-                    <table class="table table-hover table-striped">
-                        <thead>
-                            <tr>
-                                <th>Nombre</th>
-                                <th>Email</th>
-                                <th>Biografía</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach ($users as $user)    
+            </div>
+            <div class="col-md-12">
+                        <table class="table table-hover table-striped">
+                            <thead>
                                 <tr>
-                                    <td>{{ $user->name }}</td>
-                                    <td>{{ $user->email }}</td>
-                                    <td>{{ $user->bio }}</td>    
+                                    <th>Nombre</th>
+                                    <th>Email</th>
+                                    <th>Biografía</th>
                                 </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                    {{ $users->links() }}
-                </div>
+                            </thead>
+                            <tbody>
+                                @foreach ($users as $user)    
+                                    <tr>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }}</td>
+                                        <td>{{ $user->bio }}</td>    
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                        <div class="d-flex justify-content-center">
+                            {{ $users->links() }}
+                        </div>
             </div>
         </div>
     </div>

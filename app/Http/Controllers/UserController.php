@@ -8,7 +8,13 @@ use App\User;
 class UserController extends Controller
 {
     public function index(Request $request){
-        $users = User::orderBy('id', 'DESC')->paginate(4);
+        $name   = $request->name;
+        $email  = $request->email;
+        $bio    = $request->bio;
+
+        $users = User::orderBy('id', 'DESC')
+        ->name($name)->email($email)->bio($bio)
+        ->paginate(4);
 
         return view('users', compact('users'));
     }
