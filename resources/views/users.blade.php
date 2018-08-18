@@ -17,13 +17,13 @@
                         <div class="mx-auto">
                             Busqueda de Usuario
                         </div>
-                        <form action="{{ route('users') }}" method="GET" class="my-2 form-inline">
+                        <form action="{{ url('/') }}" method="GET" class="my-2 form-inline">
                             {{-- Nombre --}}
                             <div class="input-group mb-2 mr-sm-2">
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">@</div>
                                 </div>
-                                <input type="text" class="form-control" id="name" placeholder="Nombre">
+                                <input type="text" class="form-control" id="name" name="name" placeholder="Nombre">
                             </div>
 
                             {{-- Email --}}
@@ -31,7 +31,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">@</div>
                                 </div>
-                                <input type="text" class="form-control" id="email" placeholder="Email">
+                                <input type="text" class="form-control" id="email" name="email" placeholder="Email">
                             </div>
 
                             {{-- Biografia --}}
@@ -39,7 +39,7 @@
                                 <div class="input-group-prepend">
                                     <div class="input-group-text">@</div>
                                 </div>
-                                <input type="text" class="form-control" id="bio" placeholder="Biografía">
+                                <input type="text" class="form-control" id="bio" name="bio" placeholder="Biografía">
                             </div>
 
                             {{-- Boton de buscar --}}
@@ -51,6 +51,27 @@
 
                         </form>
                     </h1>
+                </div>
+                <div class="col-md-12">
+                    <table class="table table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Biografía</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($users as $user)    
+                                <tr>
+                                    <td>{{ $user->name }}</td>
+                                    <td>{{ $user->email }}</td>
+                                    <td>{{ $user->bio }}</td>    
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                    {{ $users->links() }}
                 </div>
             </div>
         </div>
